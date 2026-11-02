@@ -122,7 +122,7 @@
    ↓
 每季：deep-dives/<vertical>-YYYY-QN.md（一手访谈）
    ↓
-回填：landscape.md 进度列 / demand-and-pain-points.md 证据 / hypotheses.md 状态
+回填：landscape.md 进度列 / demand-and-pain-points.md 证据 / hypotheses.md 状态 / product-direction.md 结论与置信度
    ↓
 必要时：升 README 版本，改写核心判断
 ```
@@ -134,4 +134,5 @@
 - [ ] 区分「使用率」与「付费率」、「试点」与「生产」
 - [ ] 至少有一个反例或失败案例
 - [ ] 结论可被证伪（写明反证条件）
+- [ ] 产品方向结论有置信度、前提与止损条件
 - [ ] 不把跨国数据直接外推到中国
