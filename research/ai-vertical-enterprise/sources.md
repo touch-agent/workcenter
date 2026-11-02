@@ -40,6 +40,7 @@
 | --- | --- | --- | --- |
 | N1 | [2026-11-01 AI 日报](../../ai-news/2026-11-01.md) | OpenAI 融资/估值下调、纳斯达克回撤、算力承诺与推理成本、AI 开发平台安全事件 | 内部编辑，非独立调研 |
 | N2 | [2026-11-02 AI 日报](../../ai-news/2026-11-02.md) | DeepSeek Super-agent 架构、computer-use/桌面 Agent、Agent 调度与安全 | 内部编辑，非独立调研 |
+| N3 | [trend-agent-evolution.md](trend-agent-evolution.md) | 四代 Agent 形态演化（OpenClaw → WorkBuddy → Personal Agent → super-agent）、六条规律、三种生意与选点标准 | 内部整理稿，含外部链接；非独立调研 |
 
 ---
 

@@ -122,7 +122,7 @@
    ↓
 每季：deep-dives/<vertical>-YYYY-QN.md（一手访谈）
    ↓
-回填：landscape.md 进度列 / demand-and-pain-points.md 证据 / hypotheses.md 状态 / product-direction.md 结论与置信度
+回填：landscape.md 进度列 / demand-and-pain-points.md 证据 / hypotheses.md 状态 / product-direction.md 结论与置信度 / trend-agent-evolution.md watch list
    ↓
 必要时：升 README 版本，改写核心判断
 ```
