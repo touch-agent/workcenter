@@ -2,6 +2,12 @@
 
 Repository for the dsh-superagent to work in.
 
+## 研究
+
+| 主题 | 目录 |
+| --- | --- |
+| 垂直企业 AI 市场研究（持续更新） | [research/ai-vertical-enterprise](research/ai-vertical-enterprise/README.md) |
+
 ## AI 新闻简报索引
 
 | 日期 | 简报 |
