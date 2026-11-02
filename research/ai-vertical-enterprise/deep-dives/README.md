@@ -82,4 +82,4 @@
 - **数字可追溯**：客户规模、价格、工时、错误率，能问就问；不能问就标注「未获取」。
 - **不夸大为普遍规律**：8—12 个样本只能说明「存在」，不能说明「占比」。
 - **24 小时内成稿**：记忆衰减最快；先写原话，再写分析。
-- **回填**：完成后更新 [../hypotheses.md](../hypotheses.md) 状态与 [../landscape.md](../landscape.md) 进度列。
+- **回填**：完成后更新 [../hypotheses.md](../hypotheses.md) 状态、[../landscape.md](../landscape.md) 进度列与 [../product-direction.md](../product-direction.md) 的结论/置信度。
