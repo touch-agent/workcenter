@@ -6,7 +6,7 @@
 >
 > **明确排除**：大厂通用办公/企业智能体平台（如字节 WorkBuddy、阿里千问办公 QwenWork〔即常说的「千问工作」〕、Microsoft 365 Copilot、Google Gemini Enterprise 等）。它们只作为分发渠道、基础设施和竞争边界被观察，不作为研究对象。[S22][S23]
 >
-> **状态**：`v0.3` 桌面研究基线 + 产品方向结论，2026-11-02。尚未开展一手访谈；关键判断标注了来源与证据等级，访谈计划见 [methodology.md](methodology.md)。
+> **状态**：`v0.5` 桌面研究基线 + 产品方向结论（AI 价值占比重筛）+ Agent 形态趋势整理，2026-11-02。尚未开展一手访谈；关键判断标注了来源与证据等级，访谈计划见 [methodology.md](methodology.md)。
 >
 > **产品方向结论**：见 [product-direction.md](product-direction.md)（一页纸结论在第 0 节）。
 >
@@ -35,6 +35,8 @@
 9. **机会不必是「大场景」，高频小痛点同样能产生真价值。** 病历补录、合同条款比对、发票对账、拍照算量、商品图，都是「小点」，但高频、可复核、结果可计量。判断标准不是场景大小，而是「频次 × 单次成本 × 出错代价 × 可验证性」。详见 [demand-and-pain-points.md](demand-and-pain-points.md) 第 3 节。
 
 > 以上为基线判断，不是终局结论。每条判断在 [demand-and-pain-points.md](demand-and-pain-points.md) 中有展开，在 [hypotheses.md](hypotheses.md) 中对应可验证假设与反证条件。
+>
+> **证据集中 ≠ 产品首选**：法律/代账的需求证据多，但 AI 在其中的价值占比低；产品方向已按 [product-direction.md](product-direction.md) 第 1.7—1.8 节重筛。
 
 ---
 
@@ -42,12 +44,15 @@
 
 > 这一节回答「研究完了做什么产品」。完整论证、评分、路线图与止损条件见 [product-direction.md](product-direction.md)。
 
-- **方向**：不做通用 Agent / Bot / 办公平台；做**垂直工作流里的、可审计的文档/任务 Agent**。
-- **形态**：F2 文档自动化 → F4 任务型 Agent → F3 垂直工作流系统；人始终在环，自主度让位于可靠性。
-- **首选切口**：中型律所/企业法务的「特定合同审查 + 条款知识库 + 复核流」；有工程渠道优先「工程投标/施工资料」，有财税渠道优先「代账龙头」。
-- **客户与收费**：20—200 人精品所 / 100—500 人企业的法务部；按份/按任务/年费 + 用量；先收费试点，不做免费 PoC。
-- **目标**：90 天 3 家付费试点 → 12 个月 30 家付费；续费 ≥70%；审查时长 −40%；单份成本 < 售价 50%。
-- **止损**：90 天拿不到 3 家付费试点 → 换切口，不改「垂直工作流」方向。
+- **方向**：不做通用 Agent / Bot / 办公平台，也不做「行业知识很重、AI 只打辅助」的行业软件；做「AI 做主体、行业知识可编码、结果可验证」的垂直文档/任务 Agent。
+- **切口重筛**：法律判断型合同审查、代账记账从首选降级（AI 只占小部分）；**工程投标文件的合规/完整性检查**升为首选；合同/单据抽取、垂直客服作为备选。详见 [product-direction.md](product-direction.md) 第 1.7—1.8、4—8 节。
+- **客户约束**：客户没有技术团队，产品必须 turnkey、业务人员自助；不卖平台/API/重集成。
+- **趋势依据**：OpenClaw → WorkBuddy → Personal Agent → super-agent 的四代形态演化、六条规律与三种生意，见 [trend-agent-evolution.md](trend-agent-evolution.md)；产品方向只取与垂直交付相关的结论。
+- **形态**：F2 文档自动化 → F4 任务型 Agent → F3 垂直工作流系统；人始终在环，AI 做主体、人审例外。
+- **首选切口**：100—800 人区域施工/造价/设计企业的「投标文件合规/完整性检查 + 缺口清单」；AI 做提取/比对，不代写标书。
+- **客户与收费**：工程 100—800 人、投标团队 3—10 人；按标/按项目/年费 + 用量；先收费试点，不做免费 PoC。
+- **目标**：90 天 3 家付费试点 → 12 个月 30 家付费；续费 ≥70%；检查时长 −60%；AI 首轮覆盖 ≥70%；单标成本 < 售价 50%。
+- **止损**：90 天拿不到 3 家付费试点，或 AI 首轮覆盖 <70% → 换备选（合同抽取/垂直客服），不改「AI 做主体、人审例外」方向。
 
 ---
 
@@ -56,6 +61,7 @@
 | 文件 | 内容 | 更新频率 |
 | --- | --- | --- |
 | [product-direction.md](product-direction.md) | 产品方向结论：趋势 × 需求、切口评分、形态、定价、12 个月路线图与止损 | 每季度校准 |
+| [trend-agent-evolution.md](trend-agent-evolution.md) | Agent 形态趋势：OpenClaw/WorkBuddy/Personal Agent/super-agent 四代演化、六条规律、三种生意 | 每月追加 |
 | [methodology.md](methodology.md) | 研究问题、范围口径、证据分级、访谈提纲、更新流程 | 每季度校准 |
 | [landscape.md](landscape.md) | 形态分类、行业进度矩阵、玩家类型与大厂边界 | 每月修正 |
 | [demand-and-pain-points.md](demand-and-pain-points.md) | 真实需求分层、小痛点框架、分行业痛点、横切痛点、中国特殊性 | 每月追加 |
@@ -69,17 +75,17 @@
 
 ## 四、如何使用
 
-- **做产品研发**：先读 [product-direction.md](product-direction.md) 的结论、评分与止损条件，再用 [landscape.md](landscape.md) 和 [demand-and-pain-points.md](demand-and-pain-points.md) 核对切口；不要从「模型能力」出发选场景。
+- **做产品研发**：先读 [product-direction.md](product-direction.md) 的结论、评分与止损条件；先过「AI 价值占比」和「业务人员可用、无 IT 依赖」两条门槛；趋势依据见 [trend-agent-evolution.md](trend-agent-evolution.md)；再用 [landscape.md](landscape.md) 和 [demand-and-pain-points.md](demand-and-pain-points.md) 核对切口。不要从「模型能力」出发选场景。
 - **做产品判断**：先看 [landscape.md](landscape.md) 的「形态 × 进度」矩阵，确认目标场景处于「试点」还是「生产」；再到 [demand-and-pain-points.md](demand-and-pain-points.md) 核对预算归属与现有替代品。
 - **做投资/选题**：看 [hypotheses.md](hypotheses.md) 的假设与反证条件；优先选择「已在付费、但体验差、数据可接入、错误可复核」的场景。
 - **做持续跟踪**：每月在 `signals/` 新建当月文件，只记录**新事实**（数据、案例、价格、政策、失败），不复述旧结论。
-- **找原始来源**：所有 `[S#]` 引用对应 [sources.md](sources.md)；厂商调研一律标注利益相关。
+- **找原始来源**：`[S#]`/`[N#]` 引用对应 [sources.md](sources.md)；[trend-agent-evolution.md](trend-agent-evolution.md) 的 `[1]`—`[10]` 为文内独立编号。厂商调研一律标注利益相关。
 
 ---
 
 ## 五、更新机制
 
-1. **月度（约 2 小时）**：新增 `signals/YYYY-MM.md`；更新 [landscape.md](landscape.md) 进度列；把新证据回填到 [hypotheses.md](hypotheses.md) 的状态。
+1. **月度（约 2 小时）**：新增 `signals/YYYY-MM.md`；更新 [landscape.md](landscape.md) 进度列；把新证据回填到 [hypotheses.md](hypotheses.md) 的状态，并核对 [trend-agent-evolution.md](trend-agent-evolution.md) 的 watch list。
 2. **季度（约 1—2 周）**：选一个垂直做深访（8—12 位买方/一线使用者），产出 `deep-dives/<vertical>-YYYY-QN.md`，并修正基线判断与 [product-direction.md](product-direction.md) 的结论/置信度。
 3. **版本规则**：重大结论变化升 `0.x` 次版本；仅追加信号不改结论，记为 `v0.x.y`。
 4. **一手证据优先**：访谈、采购合同、真实账单、上线复盘 > 厂商案例 > 媒体报道。
@@ -103,3 +109,5 @@
 | 2026-11-02 | v0.1 | 建立目录与基线：方法、形态/进度矩阵、需求与痛点、假设、11 月信号、来源库 |
 | 2026-11-02 | v0.2 | 纳入两条补充观察：①目标企业「不太大、不保守」+ 成本收益/期望差；②「小痛点、真价值」框架。新增 `target-enterprise-profile.md`、`deep-dives/` 模板，扩展需求文档第 3 节 |
 | 2026-11-02 | v0.3 | 新增 `product-direction.md`：把 `ai-news/` 的供给侧趋势与垂直企业需求合并，给出产品方向、切口评分、形态、定价假设、12 个月路线图与止损条件 |
+| 2026-11-02 | v0.4 | 新增 `trend-agent-evolution.md`：把 OpenClaw/WorkBuddy/Personal Agent/super-agent 的四代形态趋势结论并入产品方向，增加 1.5/1.6 与趋势 → 决策映射 |
+| 2026-11-02 | v0.5 | 切口重筛：法律判断型审查/代账降级，工程投标合规检查升为首选；新增「AI 价值占比」与「业务人员可用、无 IT 依赖」两条硬约束 |
