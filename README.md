@@ -6,4 +6,5 @@ Repository for the dsh-superagent to work in.
 
 | 日期 | 简报 |
 | --- | --- |
+| 2026-11-02 | [2026-11-02 AI 日报](ai-news/2026-11-02.md) |
 | 2026-11-01 | [2026-11-01 AI 日报](ai-news/2026-11-01.md) |
