@@ -1334,6 +1334,11 @@
   backdrop.addEventListener('click', closeDrawer);
   document.getElementById('close-drawer').addEventListener('click', closeDrawer);
   document.querySelectorAll('[data-drawer="notifications"]').forEach(b => b.addEventListener('click', openDrawer));
+  document.querySelector('#drawer-notifications .link').addEventListener('click', () => {
+    document.querySelectorAll('#drawer-notifications .notice.unread').forEach(n => n.classList.remove('unread'));
+    const c = document.querySelector('#notif-title + .count');
+    if (c) c.textContent = '0';
+  });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
   document.querySelectorAll('.chip[data-filter]').forEach(chip => chip.addEventListener('click', () => {
     document.querySelectorAll('.chip[data-filter]').forEach(c => c.classList.remove('active'));
