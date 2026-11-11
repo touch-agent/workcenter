@@ -174,6 +174,7 @@
   .state-dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 8px; }
   .state-dot.running { background: var(--accent); box-shadow: 0 0 0 3px rgba(59, 91, 253, .14); animation: breathe 2.4s ease-in-out infinite; }
   .state-dot.waiting { background: var(--amber); box-shadow: 0 0 0 3px rgba(180, 83, 9, .13); }
+  .state-dot.review { background: #7c5cff; box-shadow: 0 0 0 3px rgba(124, 92, 255, .14); }
   .state-dot.done { background: var(--green); }
   .state-dot.error { background: var(--red); }
   @keyframes breathe { 0%, 100% { box-shadow: 0 0 0 3px rgba(59,91,253,.14); } 50% { box-shadow: 0 0 0 5px rgba(59,91,253,.07); } }
@@ -217,6 +218,7 @@
   .status-pill { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 9px; border-radius: 999px; font-size: 11.5px; font-weight: 600; }
   .status-pill.running { background: var(--accent-soft); color: var(--accent-ink); }
   .status-pill.waiting { background: var(--amber-soft); color: var(--amber); }
+  .status-pill.review { background: #f4f0ff; color: #6d3bd4; }
   .status-pill.done { background: var(--green-soft); color: var(--green); }
   .detail-sub { color: var(--ink-3); font-size: 12.5px; margin-top: 6px; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
   .detail-sub .sep { width: 3px; height: 3px; border-radius: 50%; background: var(--ink-3); display: inline-block; }
@@ -835,16 +837,16 @@
         <div class="main">
           <div class="detail-title">
             <h1 id="detail-title">替换演练</h1>
-            <span class="status-pill running"><span class="state-dot running" style="width:6px;height:6px;flex-basis:6px"></span>进行中</span>
+            <span class="status-pill running" id="detail-status"><span class="state-dot running" style="width:6px;height:6px;flex-basis:6px"></span>进行中</span>
           </div>
           <p class="detail-sub">
-            <span>来自对话</span><span class="sep"></span>
-            <span>17:04 由你发起</span><span class="sep"></span>
+            <span id="detail-origin">来自对话</span><span class="sep"></span>
+            <span id="detail-time">17:04 由你发起</span><span class="sep"></span>
             <span>负责人：数字员工</span><span class="sep"></span>
-            <span>最近更新 3 分钟前</span>
+            <span id="detail-updated">最近更新 3 分钟前</span>
           </p>
         </div>
-        <div class="detail-actions">
+        <div class="detail-actions" id="detail-actions">
           <button class="btn">补充说明</button>
           <button class="btn danger">停止任务</button>
         </div>
@@ -857,9 +859,9 @@
               <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>
               现在在做什么
             </h2>
-            <p class="now-title">正在核对 3 条可回退边界</p>
-            <p class="now-desc">逐条确认替换后能否回到原状态，并记录前后关键指标。下一步会生成演练报告，预计还需 12 分钟。</p>
-            <div class="steps">
+            <p class="now-title" id="detail-now-title">正在核对 3 条可回退边界</p>
+            <p class="now-desc" id="detail-now-desc">逐条确认替换后能否回到原状态，并记录前后关键指标。下一步会生成演练报告，预计还需 12 分钟。</p>
+            <div class="steps" id="detail-steps">
               <div class="step done">
                 <span class="step-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span>
                 <div class="step-main"><strong>确认演练范围与验收标准</strong><small>3 条边界、可回退、指标可对比</small></div>
@@ -883,7 +885,7 @@
               <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 8v5l3 2"/><circle cx="12" cy="12" r="8.5"/></svg>
               进展
             </h2>
-            <div class="timeline">
+            <div class="timeline" id="detail-timeline">
               <div class="tl-row">
                 <span class="tl-icon accent"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span>
                 <div class="tl-main"><strong>收到请求</strong><p>你在对话里说「做替换演练」</p></div>
@@ -907,7 +909,7 @@
               <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M13 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V9l-6-6Z"/><path d="M13 3v6h6"/></svg>
               交付物
             </h2>
-            <div class="artifact">
+            <div class="artifact" id="detail-artifact">
               <span class="file-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V9l-6-6Z"/><path d="M13 3v6h6"/></svg></span>
               <div class="a-main"><strong>替换演练报告</strong><small>生成中 · 完成后会出现在这里</small></div>
               <span class="tag">预计 12 分钟</span>
@@ -923,9 +925,9 @@
             </h2>
             <div class="source-line">
               <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 11.5a7.5 7.5 0 0 1-10.9 6.7L4 19.5l1.3-4.1A7.5 7.5 0 1 1 20 11.5Z"/></svg>
-              <div><strong>来自和助手的对话</strong><p>你在 17:04 的这条消息</p></div>
+              <div><strong id="detail-source-title">来自和助手的对话</strong><p id="detail-source-sub">你在 17:04 的这条消息</p></div>
             </div>
-            <div class="quote">“做替换演练。重点是真实换一条边界，能回退，指标可对比。”</div>
+            <div class="quote" id="detail-quote">“做替换演练。重点是真实换一条边界，能回退，指标可对比。”</div>
             <button class="link" style="margin-top:8px" data-screen="chat">查看原消息</button>
           </div>
 
@@ -949,10 +951,10 @@
               <summary>展开技术信息
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
               </summary>
-              <div class="kv"><span style="width:64px">任务 ID</span><code>ticket_8f3a…</code></div>
-              <div class="kv"><span style="width:64px">执行会话</span><code>worker-8f3a…</code></div>
-              <div class="kv"><span style="width:64px">工作目录</span><code>system/work/rehearsal</code></div>
-              <div class="kv"><span style="width:64px">触发记录</span><code>conversation #2041</code></div>
+              <div class="kv"><span style="width:64px">任务 ID</span><code id="detail-kv-id">ticket_8f3a…</code></div>
+              <div class="kv"><span style="width:64px">执行会话</span><code id="detail-kv-session">worker-8f3a…</code></div>
+              <div class="kv"><span style="width:64px">工作目录</span><code id="detail-kv-dir">system/work/rehearsal</code></div>
+              <div class="kv"><span style="width:64px">触发记录</span><code id="detail-kv-trigger">conversation #2041</code></div>
             </details>
           </div>
         </aside>
@@ -1133,6 +1135,180 @@
   const drawer = document.getElementById('drawer-notifications');
   const backdrop = document.getElementById('backdrop');
 
+
+  // Task details are data-driven so every entry opens the right example.
+  const ICON_CHECK = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>';
+  const ICON_DOT = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/></svg>';
+  const ICON_LIST = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h7"/></svg>';
+  const ICON_PLUS = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>';
+  const ICON_DOC = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V9l-6-6Z"/><path d="M13 3v6h6"/></svg>';
+
+  const DETAILS = {
+    rehearsal: {
+      title: '替换演练', status: '进行中', statusClass: 'running',
+      origin: '来自对话', time: '17:04 由你发起', updated: '最近更新 3 分钟前',
+      nowTitle: '正在核对 3 条可回退边界',
+      nowDesc: '逐条确认替换后能否回到原状态，并记录前后关键指标。下一步会生成演练报告，预计还需 12 分钟。',
+      steps: [
+        { state: 'done', title: '确认演练范围与验收标准', sub: '3 条边界、可回退、指标可对比', time: '17:04' },
+        { state: 'active', title: '核对可回退边界', sub: '已完成 1 / 3 条 · 行为等价性检查中', time: '进行中' },
+        { state: '', title: '生成演练报告', sub: '含替换前后指标与回退验证结论', time: '等待中' }
+      ],
+      timeline: [
+        { title: '收到请求', desc: '你在对话里说「做替换演练」', time: '17:04', icon: 'check', accent: true },
+        { title: '已确认范围', desc: '3 条边界、行为等价、失败可回退', time: '17:05', icon: 'list' },
+        { title: '第 1 条边界核对通过', desc: '行为等价，可回退；继续第 2 条', time: '17:12', icon: 'plus' }
+      ],
+      artifact: { title: '替换演练报告', sub: '生成中 · 完成后会出现在这里', tag: '预计 12 分钟', action: '' },
+      quote: '“做替换演练。重点是真实换一条边界，能回退，指标可对比。”',
+      sourceTitle: '来自和助手的对话', sourceSub: '你在 17:04 的这条消息',
+      actions: 'normal',
+      kv: { id: 'ticket_8f3a…', session: 'worker-8f3a…', dir: 'system/work/rehearsal', trigger: 'conversation #2041' }
+    },
+    renewal: {
+      title: 'Q4 客户续约材料', status: '进行中', statusClass: 'running',
+      origin: '来自飞书', time: '今天 17:02 由你发起', updated: '最近更新 12 分钟前',
+      nowTitle: '正在汇总 12 家客户的用量与到期时间',
+      nowDesc: '从飞书群和续约表读取数据，圈出需要优先跟进的客户。下一步生成续约材料初稿，预计 20 分钟。',
+      steps: [
+        { state: 'done', title: '收到需求', sub: '来自飞书群 · 续约跟进', time: '17:02' },
+        { state: 'active', title: '汇总用量与到期时间', sub: '12 / 12 家已汇总 · 正在排优先级', time: '进行中' },
+        { state: '', title: '生成续约材料初稿', sub: '含续约风险与建议动作', time: '等待中' }
+      ],
+      timeline: [
+        { title: '收到请求', desc: '飞书群里提出整理 Q4 续约材料', time: '17:02', icon: 'check', accent: true },
+        { title: '已接上数据源', desc: '续约表 + 用量明细', time: '17:04', icon: 'list' },
+        { title: '客户用量已汇总 12 / 12', desc: '正在整理需优先跟进的名单', time: '17:12', icon: 'plus' }
+      ],
+      artifact: { title: 'Q4 客户续约材料（生成中）', sub: '完成后可打开', tag: '预计 20 分钟', action: '' },
+      quote: '“帮我 Q4 客户续约材料整理一下，重点看用量下滑和快到期的。”',
+      sourceTitle: '来自飞书群 · 续约跟进', sourceSub: '你在 17:02 的这条消息',
+      actions: 'normal',
+      kv: { id: 'ticket_b2c1…', session: 'worker-b2c1…', dir: 'system/work/renewal', trigger: 'feishu message #…' }
+    },
+    report: {
+      title: '修复导出报表空值问题', status: '待你确认 · 审阅', statusClass: 'review',
+      origin: '来自对话', time: '今天 17:20 由你发起', updated: '最近更新 10 分钟前',
+      nowTitle: 'PR #131 已就绪，等你检查',
+      nowDesc: '修复了导出报表遇到空单元格时的崩溃；3 个文件，+48 / −12。批准后合并。',
+      steps: [
+        { state: 'done', title: '定位空值路径', sub: '复现空行导出崩溃', time: '17:22' },
+        { state: 'done', title: '修复并补测试', sub: '覆盖空单元格与空行', time: '17:35' },
+        { state: 'active', title: '等你批准', sub: '批准后合并', time: '现在' }
+      ],
+      timeline: [
+        { title: '收到请求', desc: '你说导出报表有空行时直接报错', time: '17:20', icon: 'check', accent: true },
+        { title: '已定位问题', desc: '空单元格未做判空', time: '17:22', icon: 'list' },
+        { title: '已提交 PR #131', desc: '3 个文件，+48 / −12', time: '17:35', icon: 'plus' },
+        { title: '等你批准', desc: '批准后合并', time: '现在', icon: 'check' }
+      ],
+      artifact: { title: 'PR #131 · 修复导出报表空值', sub: '3 个文件，+48 / −12', tag: '待批准', action: '查看 PR' },
+      quote: '“导出报表有空行时直接报错，帮忙修一下。”',
+      sourceTitle: '来自和助手的对话', sourceSub: '你在 17:20 的这条消息',
+      actions: 'review',
+      kv: { id: 'ticket_31af…', session: 'worker-31af…', dir: 'system/work/report', trigger: 'conversation #…' }
+    },
+    'review-meeting': {
+      title: '下周评审会材料', status: '待你确认 · 待回答', statusClass: 'waiting',
+      origin: '来自对话', time: '今天 16:40 由你发起', updated: '最近更新 1 小时前',
+      nowTitle: '评审会材料要包含上季度数据吗？',
+      nowDesc: '包含会让材料多 6 页，但论证更完整；不包含则更聚焦本季度。你回答后我继续生成。',
+      steps: [
+        { state: 'done', title: '收集本季度数据', sub: '用量、收入、重点客户', time: '16:42' },
+        { state: 'done', title: '搭好材料框架', sub: '背景、进展、下一步', time: '17:00' },
+        { state: 'active', title: '等你确认范围', sub: '是否包含上季度对比', time: '现在' }
+      ],
+      timeline: [
+        { title: '收到请求', desc: '你说先把评审会材料框架搭起来', time: '16:40', icon: 'check', accent: true },
+        { title: '已收集本季度数据', desc: '用量、收入、重点客户', time: '16:42', icon: 'list' },
+        { title: '已暂停，等你回答', desc: '问题：是否包含上季度数据', time: '17:00', icon: 'plus' }
+      ],
+      artifact: { title: '评审会材料初稿', sub: '等待范围确认后继续', tag: '暂停', action: '' },
+      quote: '“下周评审会的材料，先把框架搭起来。”',
+      sourceTitle: '来自和助手的对话', sourceSub: '你在 16:40 的这条消息',
+      actions: 'question',
+      kv: { id: 'ticket_7d2e…', session: 'worker-7d2e…', dir: 'system/work/review', trigger: 'conversation #…' }
+    },
+    contract: {
+      title: '供应商合同条款比对', status: '已完成', statusClass: 'done',
+      origin: '来自飞书', time: '今天 11:20 由你发起', updated: '今天 15:20 完成',
+      nowTitle: '已提取 14 条关键条款，生成差异表',
+      nowDesc: '比对了 3 家供应商的付款、违约、续约条款；差异表可直接打开。',
+      steps: [
+        { state: 'done', title: '读取 3 份合同', sub: '付款、违约、续约', time: '11:30' },
+        { state: 'done', title: '提取 14 条关键条款', sub: '按风险等级标注', time: '14:50' },
+        { state: 'done', title: '生成差异表', sub: '可直接打开', time: '15:20' }
+      ],
+      timeline: [
+        { title: '收到请求', desc: '飞书群里发来 3 份合同', time: '11:20', icon: 'check', accent: true },
+        { title: '已读取合同', desc: '3 份，共 42 页', time: '11:30', icon: 'list' },
+        { title: '已生成差异表', desc: '14 条关键条款', time: '15:20', icon: 'check' }
+      ],
+      artifact: { title: '供应商合同条款差异表.xlsx', sub: '3 家供应商 · 14 条关键条款', tag: '已完成', action: '打开' },
+      quote: '“把这三家供应商的合同条款比一下，重点看付款和违约。”',
+      sourceTitle: '来自飞书群 · 采购', sourceSub: '你在 11:20 的这条消息',
+      actions: 'done',
+      kv: { id: 'ticket_5c8e…', session: 'worker-5c8e…', dir: 'system/work/contract', trigger: 'feishu message #…' }
+    },
+    pricing: {
+      title: '新版定价页文案', status: '已完成', statusClass: 'done',
+      origin: '来自对话', time: '昨天 18:02 由你发起', updated: '昨天 18:02 完成',
+      nowTitle: '已给出 3 版文案，并标注适用场景',
+      nowDesc: '分别面向新客户、老客户升级和渠道合作；可直接打开对比。',
+      steps: [
+        { state: 'done', title: '明确目标受众', sub: '新客户 / 升级 / 渠道', time: '17:40' },
+        { state: 'done', title: '写 3 版文案', sub: '每版 1 个主标题 + 3 条卖点', time: '17:55' },
+        { state: 'done', title: '标注适用场景', sub: '可直接对比', time: '18:02' }
+      ],
+      timeline: [
+        { title: '收到请求', desc: '你说新版定价页要三个方向', time: '17:38', icon: 'check', accent: true },
+        { title: '已明确受众', desc: '新客户 / 升级 / 渠道', time: '17:40', icon: 'list' },
+        { title: '3 版文案已完成', desc: '并标注适用场景', time: '18:02', icon: 'check' }
+      ],
+      artifact: { title: '新版定价页文案（3 版）', sub: '新客户 / 升级 / 渠道', tag: '已完成', action: '打开' },
+      quote: '“新版定价页的文案，给我三个方向。”',
+      sourceTitle: '来自和助手的对话', sourceSub: '你在昨天的这条消息',
+      actions: 'done',
+      kv: { id: 'ticket_9a1b…', session: 'worker-9a1b…', dir: 'system/work/pricing', trigger: 'conversation #…' }
+    }
+  };
+
+  function openDetail(key) {
+    const d = DETAILS[key] || DETAILS.rehearsal;
+    document.getElementById('detail-title').textContent = d.title;
+    const status = document.getElementById('detail-status');
+    status.className = 'status-pill ' + d.statusClass;
+    status.innerHTML = '<span class="state-dot ' + d.statusClass + '" style="width:6px;height:6px;flex-basis:6px"></span>' + d.status;
+    document.getElementById('detail-origin').textContent = d.origin;
+    document.getElementById('detail-time').textContent = d.time;
+    document.getElementById('detail-updated').textContent = d.updated;
+    document.getElementById('detail-now-title').textContent = d.nowTitle;
+    document.getElementById('detail-now-desc').textContent = d.nowDesc;
+    document.getElementById('detail-steps').innerHTML = d.steps.map(s => {
+      const mark = s.state === 'done' ? ICON_CHECK : s.state === 'active' ? ICON_DOT : '';
+      return '<div class="step ' + s.state + '"><span class="step-dot">' + mark + '</span><div class="step-main"><strong>' + s.title + '</strong><small>' + s.sub + '</small></div><span class="step-time">' + s.time + '</span></div>';
+    }).join('');
+    document.getElementById('detail-timeline').innerHTML = d.timeline.map(t => {
+      const icon = t.icon === 'list' ? ICON_LIST : t.icon === 'plus' ? ICON_PLUS : ICON_CHECK;
+      return '<div class="tl-row"><span class="tl-icon ' + (t.accent ? 'accent' : '') + '">' + icon + '</span><div class="tl-main"><strong>' + t.title + '</strong><p>' + t.desc + '</p></div><span class="tl-time">' + t.time + '</span></div>';
+    }).join('');
+    const a = d.artifact;
+    document.getElementById('detail-artifact').innerHTML = '<span class="file-ico">' + ICON_DOC + '</span><div class="a-main"><strong>' + a.title + '</strong><small>' + a.sub + '</small></div>' + (a.action ? '<button class="btn sm">' + a.action + '</button>' : '<span class="tag">' + a.tag + '</span>');
+    document.getElementById('detail-quote').textContent = d.quote;
+    document.getElementById('detail-source-title').textContent = d.sourceTitle;
+    document.getElementById('detail-source-sub').textContent = d.sourceSub;
+    document.getElementById('detail-kv-id').textContent = d.kv.id;
+    document.getElementById('detail-kv-session').textContent = d.kv.session;
+    document.getElementById('detail-kv-dir').textContent = d.kv.dir;
+    document.getElementById('detail-kv-trigger').textContent = d.kv.trigger;
+    const actions = document.getElementById('detail-actions');
+    if (d.actions === 'review') actions.innerHTML = '<button class="btn primary">批准并合并</button><button class="btn">退回</button>';
+    else if (d.actions === 'question') actions.innerHTML = '<button class="btn primary">回答</button><button class="btn">稍后</button>';
+    else if (d.actions === 'done') actions.innerHTML = '<button class="btn primary">打开结果</button><button class="btn">再次执行</button>';
+    else actions.innerHTML = '<button class="btn">补充说明</button><button class="btn danger">停止任务</button>';
+    show('detail');
+  }
+
   function show(name) {
     if (!screens.includes(name)) name = 'tasks';
     document.querySelectorAll('.screen').forEach(s => s.classList.toggle('active', s.id === `screen-${name}`));
@@ -1151,7 +1327,7 @@
   }));
   document.querySelectorAll('[data-detail]').forEach(el => el.addEventListener('click', (e) => {
     e.preventDefault(); e.stopPropagation();
-    show('detail');
+    openDetail(el.dataset.detail || 'rehearsal');
   }));
   function openDrawer() { drawer.classList.add('show'); backdrop.classList.add('show'); document.body.style.overflow = 'hidden'; }
   function closeDrawer() { drawer.classList.remove('show'); backdrop.classList.remove('show'); document.body.style.overflow = ''; }
@@ -1165,7 +1341,7 @@
   }));
   // Keyboard access for task cards
   document.querySelectorAll('.task-card').forEach(card => card.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show('detail'); }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDetail(card.dataset.detail || 'rehearsal'); }
   }));
   // Prototype-only: switch between the installable plugin surface and the host-level concept.
   function setMode(mode) {

@@ -244,6 +244,10 @@ Activity / Notice       →   通知（按任务聚合）
 - **高级详情**（右栏，折叠）：任务 ID、执行会话、工作目录、触发记录。给排查的人，日常不打开。
 - **动作**：补充说明 / 停止任务；审阅类任务把「批准 / 退回」放在最上面。
 
+**审阅类任务**：主动作换成「批准并合并 / 退回」，交付物直接是 PR；用户不需要先找任务、再找 PR。
+
+![审阅类任务详情](images/after-plugin-detail-review.png)
+
 **为什么把「来路」放右栏**：用户最常见的疑问是「这任务哪来的、我是不是说过」，而不是「审计链是什么」。原文引用比 ID 有用。
 
 ### 4.3 通知中心
@@ -553,7 +557,8 @@ InboxItem {
 | `images/before-03-tasks.png` | 当前任务 tab：工单列表、负责人=会话 |
 | `images/after-plugin-tasks.png` | 设计：任务收件箱（插件内方案） |
 | `images/after-plugin-rail.png` | 设计：左栏治理（主对话置顶、执行会话命名、归档） |
-| `images/after-plugin-detail.png` | 设计：任务详情 |
+| `images/after-plugin-detail.png` | 设计：任务详情（进行中） |
+| `images/after-plugin-detail-review.png` | 设计：任务详情（待你审阅） |
 | `images/after-plugin-notifications.png` | 设计：通知中心 |
 | `images/after-plugin-chat.png` | 设计：主对话 + 内联任务卡 |
 | `images/after-plugin-advanced.png` | 设计：运维视图（后置） |
