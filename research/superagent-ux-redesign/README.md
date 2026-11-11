@@ -7,6 +7,8 @@
 > **证据**：改造前截图来自当前运行实例（1440×900，浅色，`2026-11-11`）；改造后为可交互原型（同尺寸、同主题、合成数据），见 [`prototype.html`](prototype.html) 与 [`images/`](images/)。原型不是已实现界面。
 >
 > **基线**：`touch-agent/dsh-superagent` @ `73709a4`，宿主 DSH `0.2.1-rc.5`。工单 `cd48ecae…`。
+>
+> **迁移**：本设计与截图、原型已迁至 `touch-agent/dsh-superagent` 的 [`docs/021-ux-redesign.zh.md`](https://github.com/touch-agent/dsh-superagent/blob/main/docs/021-ux-redesign.zh.md)（迁移 PR [#58](https://github.com/touch-agent/dsh-superagent/pull/58)）。此页保留为历史原文，不再更新。
 
 ---
 
