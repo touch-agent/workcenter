@@ -298,9 +298,9 @@ Activity / Notice       →   通知（按任务聚合）
 
 ### 4.6 左栏治理（插件能做的部分）
 
-| 现在：工作区与会话混排，主会话淹没 | 设计：主对话置顶，执行会话可识别，结束后归档 |
-| --- | --- |
-| ![现在：左栏会话列表（会话名已脱敏）](images/before-rail.png) | ![设计：左栏治理](images/after-plugin-rail.png) |
+![左栏前后对照：BEFORE 工作区与会话混排，主会话淹没；AFTER 主对话置顶、执行会话可识别、结束后归档](images/before-after-rail.png)
+
+> 左：现在（会话名已脱敏）；右：设计。两边都截取「工作区 + 会话列表」同一区域。
 
 插件不能重排/过滤宿主左栏，但可以做四件事，让「会话越多越乱」显著缓解：
 
@@ -547,7 +547,8 @@ InboxItem {
 | 文件 | 内容 |
 | --- | --- |
 | `images/before-01-home.png` | 当前主界面：左栏会话膨胀、主会话淹没（会话名已脱敏） |
-| `images/before-rail.png` | 上图的左栏裁切；用于 §4.6 前后对照 |
+| `images/before-rail.png` | 上图的左栏裁切（会话名已脱敏） |
+| `images/before-after-rail.png` | 左栏前后对照合成图（§4.6） |
 | `images/before-02-overview.png` | 当前 Superagent 概览：告警占首屏、内部 tab |
 | `images/before-03-tasks.png` | 当前任务 tab：工单列表、负责人=会话 |
 | `images/after-plugin-tasks.png` | 设计：任务收件箱（插件内方案） |
