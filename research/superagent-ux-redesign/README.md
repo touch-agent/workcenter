@@ -31,11 +31,10 @@
 
 | 改造前 | 改造后（设计原型） |
 | --- | --- |
-| ![现在：左栏会话列表 + 新会话空态](images/before-01-home.png) | ![设计：任务收件箱 + 主对话固定](images/after-plugin-tasks.png) |
-| ![现在：Superagent 概览，告警占首屏](images/before-02-overview.png) | ![设计：同一面板，运维视图后置并加说明](images/after-plugin-advanced.png) |
+| ![现在：Superagent 概览，告警占首屏](images/before-02-overview.png) | ![设计：任务收件箱，先给需要你处理的事](images/after-plugin-tasks.png) |
 | ![现在：任务 tab 是工单列表](images/before-03-tasks.png) | ![设计：任务详情回答「做到哪、下一步、从哪来」](images/after-plugin-detail.png) |
 
-> 上表不是同一数据状态的像素级对照：**Before** 是当前真实运行实例，**After** 是设计原型。相同的是 1440×900 视口、浅色主题，以及「用户来找任务」这一场景；像素级对照在实现 PR 中补。
+> 上表不是同一数据状态的像素级对照：**Before** 是当前真实运行实例，**After** 是设计原型。相同的是 1440×900 视口、浅色主题，以及「用户来找任务」这一场景；像素级对照在实现 PR 中补。左栏的前后对照见 §4.6；Before 截图中的会话名已脱敏。
 
 ---
 
@@ -43,7 +42,7 @@
 
 ### 1.1 三个真实画面
 
-- **主界面**（`images/before-01-home.png`）：左栏「工作区」下是一长串会话，`replacement-t5-…`、`evolve-t5-…`、`context-t5-…`……用户不知道哪些是自己的对话、哪些是任务执行会话；主会话没有稳定位置。
+- **主界面**（`images/before-01-home.png`，会话名已脱敏）：左栏「工作区」下是一长串会话，`replacement-t5-…`、`evolve-t5-…`、`context-t5-…`……用户不知道哪些是自己的对话、哪些是任务执行会话；主会话没有稳定位置。
 - **Superagent 概览**（`images/before-02-overview.png`）：首屏最大面积是「GitHub 来源异常 · 连续 237 次轮询失败」；「待我处理」只有 1 条，被压在告警下面；「正在跑 / 最近历史」以工单为单位，信息密度高但没有「下一步」。
 - **任务 tab**（`images/before-03-tasks.png`）：列表行只有标题、状态、时间、`负责人：会话`；没有来源、没有交付物、没有「我需要做什么」；还混着 `T5-06`、`E0–E3` 这类计划编号。
 
@@ -299,7 +298,9 @@ Activity / Notice       →   通知（按任务聚合）
 
 ### 4.6 左栏治理（插件能做的部分）
 
-![左栏治理](images/after-plugin-rail.png)
+| 现在：工作区与会话混排，主会话淹没 | 设计：主对话置顶，执行会话可识别，结束后归档 |
+| --- | --- |
+| ![现在：左栏会话列表（会话名已脱敏）](images/before-rail.png) | ![设计：左栏治理](images/after-plugin-rail.png) |
 
 插件不能重排/过滤宿主左栏，但可以做四件事，让「会话越多越乱」显著缓解：
 
@@ -518,7 +519,7 @@ InboxItem {
 
 ### 9.3 证据与限制
 
-- **Before**：真实运行实例截图（1440×900，浅色）；包含内部任务名，仓库为私有。
+- **Before**：真实运行实例截图（1440×900，浅色）；左栏会话名已脱敏（`before-rail.png` 与 `before-01-home.png`），其余仍是实际界面。
 - **After**：设计原型（同尺寸/主题/合成数据）；**不是已实现界面**。原型交互：任务卡 → 详情；铃铛 → 通知；运维 → 运维视图；原型右下角可切换「插件内 / 宿主增强」。
 - **没有验证**：真实数据下的标题清洗、来源映射、进度百分比、通知去重；这些需要在 Phase 0/1 用真实 Store 回放验证。
 - **没有包含**：移动端原生、完整看板/甘特、权限模型改动、多语言文案（建议同步 zh/en）。
@@ -545,7 +546,8 @@ InboxItem {
 
 | 文件 | 内容 |
 | --- | --- |
-| `images/before-01-home.png` | 当前主界面：左栏会话膨胀、主会话淹没 |
+| `images/before-01-home.png` | 当前主界面：左栏会话膨胀、主会话淹没（会话名已脱敏） |
+| `images/before-rail.png` | 上图的左栏裁切；用于 §4.6 前后对照 |
 | `images/before-02-overview.png` | 当前 Superagent 概览：告警占首屏、内部 tab |
 | `images/before-03-tasks.png` | 当前任务 tab：工单列表、负责人=会话 |
 | `images/after-plugin-tasks.png` | 设计：任务收件箱（插件内方案） |
